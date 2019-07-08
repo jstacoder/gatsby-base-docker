@@ -20,7 +20,7 @@ ENV PATH $PATH:/app/.node_modules/bin
 
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y build-essential python-dev libvips-dev git --no-install-recommends && \
+    apt install -y build-essential python-dev libvips-dev git ssh --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     npm install -g npm5
 
