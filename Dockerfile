@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node:10-slim
 
 ARG PORT=8005
 
@@ -23,8 +23,6 @@ RUN apt update && \
     apt install -y build-essential python-dev libvips-dev git --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     npm install -g npm5
-
-RUN mkdir /app
 
 WORKDIR /app
 
