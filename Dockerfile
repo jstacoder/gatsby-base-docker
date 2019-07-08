@@ -1,6 +1,6 @@
 FROM node:10-slim
 
-ARG PORT=8005
+ARG PORT=8000
 
 ARG VERSION=latest
 
@@ -26,17 +26,12 @@ RUN apt update && \
 
 WORKDIR /app
 
-ADD ./package.json /app/
-
 RUN npm install -g yarn
 
 RUN yarn global add gatsby-cli@$VERSION
 
-RUN yarn install
+EXPOSE $PORT
 
-EXPOSE 8000
+ENTRYPOINT ["yarn"]
 
-EXPOSE 8005
-
-CMD ["yarn", "develop"]
-
+CMD ["develop", "--host", "0.0.0.0", "--port", "${PORT}"]
