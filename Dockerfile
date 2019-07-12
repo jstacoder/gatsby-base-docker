@@ -6,7 +6,7 @@ ARG VERSION=latest
 
 ARG RELEASE=master
 
-ENV PORT $PORT
+ENV PORT 8000
 
 ENV VERSION $VERSION
 
@@ -28,10 +28,8 @@ WORKDIR /app
 
 RUN npm install -g yarn
 
-RUN yarn global add gatsby-cli@$VERSION
+RUN yarn global add gatsby-cli@2.9.11
 
 EXPOSE $PORT
 
-ENTRYPOINT ["yarn"]
-
-CMD ["develop", "--host", "0.0.0.0", "--port", "${PORT}"]
+CMD ["yarn", "develop", "--host", "0.0.0.0", "--port", "${PORT}"]
